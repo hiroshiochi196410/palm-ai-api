@@ -32,7 +32,11 @@ let loaded = false;
 
 async function loadModel() {
   try {
-    const modelPath = path.join(__dirname, 'model.json');
+    // 変更前:
+// const modelPath = path.join(__dirname, 'model.json');
+
+// 変更後（models ディレクトリに統一）:
+const modelPath = path.join(__dirname, 'models', 'model.json');
     if (!fs.existsSync(modelPath)) {
       throw new Error(`model.json not found at ${modelPath}（同階層に置いてください）`);
     }
