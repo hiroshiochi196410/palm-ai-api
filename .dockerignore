@@ -1,37 +1,14 @@
-# 重い/不要ファイルは送らない
-node_modules
-.git
-.gitignore
-*.log
-.DS_Store
-tmp
-dist
-build
-coverage
-.cache
-logs
-docs
-screenshots
-assets
-datasets
-*.zip
-*.tar
-*.7z
-*.rar
-*.csv
-*.xlsx
-*.ipynb
-*.pdf
-*.mp4
-*.mov
-*.avi
-*.jpg
-*.jpeg
-*.png
-*.gif
-.env
+# まず全て無視（allowlist 方式）
+**
 
-# モデルは必要最小限だけ含める
-models/*
+# ここから必要な物だけ許可
+!server.js
+!package.json
+!package-lock.json
+!Dockerfile
+!.dockerignore
+
+# モデルは models/ に置く前提で、必要なファイルだけ許可
+!models/
 !models/model.json
 !models/*.bin
