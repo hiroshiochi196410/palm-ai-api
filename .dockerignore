@@ -1,0 +1,37 @@
+# 重い/不要ファイルは送らない
+node_modules
+.git
+.gitignore
+*.log
+.DS_Store
+tmp
+dist
+build
+coverage
+.cache
+logs
+docs
+screenshots
+assets
+datasets
+*.zip
+*.tar
+*.7z
+*.rar
+*.csv
+*.xlsx
+*.ipynb
+*.pdf
+*.mp4
+*.mov
+*.avi
+*.jpg
+*.jpeg
+*.png
+*.gif
+.env
+
+# モデルは必要最小限だけ含める
+models/*
+!models/model.json
+!models/*.bin
