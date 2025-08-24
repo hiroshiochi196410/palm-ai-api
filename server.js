@@ -9,7 +9,16 @@ const sharp = require('sharp');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-
++// === Image preprocess: 入力を [1,224,224,3] に統一（expandDims は1回だけ）===
++function preprocess(buffer) {
++  return tf.tidy(() => {
++    let img = tf.node.decodeImage(buffer, 3);      // [H, W, 3]
++    img = tf.image.resizeBilinear(img, [224, 224]); // [224, 224, 3]
++    img = img.toFloat().sub(127.5).div(127.5);
+                   // 0-1 正規化（必要に応じて変更）
++    return img.expandDims(0);                       // [1, 224, 224, 3]
++  });
++}
 const app = express();
 const PORT = process.env.PORT || 3000;
 
