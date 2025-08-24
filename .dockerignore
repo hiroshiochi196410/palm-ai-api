@@ -1,14 +1,8 @@
-# まず全て無視（allowlist 方式）
 **
-
-# ここから必要な物だけ許可
 !server.js
 !package.json
 !package-lock.json
 !Dockerfile
 !.dockerignore
-
-# モデルは models/ に置く前提で、必要なファイルだけ許可
-!models/
 !models/model.json
 !models/*.bin
