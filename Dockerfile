@@ -1,12 +1,13 @@
-# Dockerfile（Railway では Builder を Dockerfile に設定）
 FROM node:20-bullseye-slim
 WORKDIR /app
 
-# 依存を先に入れてキャッシュ最適化
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN if [ -f package-lock.json ]; then \
+      npm ci --omit=dev --no-audit --no-fund; \
+    else \
+      npm install --omit=dev --no-audit --no-fund; \
+    fi
 
-# アプリ本体（models/ を含む）をコピー
 COPY . .
 
 ENV NODE_ENV=production
